@@ -10,9 +10,9 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
   const authHeader = req.headers.authorization;
   if (authHeader) {
     const token = authHeader.split(' ')[1];
-    const secret: any = process.env.JWT_SECRET_KEY;
-    // const secretKey = process.env.JWT_SECRET_KEY || '';
-    jwt.verify(token, secret, (error: any, user: any) => {
+    // const secretKey: any = process.env.JWT_SECRET_KEY;
+    const secretKey = process.env.JWT_SECRET_KEY || '';
+    jwt.verify(token, secretKey, (error: any, user: any) => {
       if (error){
         return res.sendStatus(403);
       }
@@ -20,7 +20,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
       return next();
     })
   } else {
-    return res.sendStatus(401);
+    res.sendStatus(401);
   }
 
 };
