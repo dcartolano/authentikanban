@@ -2,12 +2,11 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+The purpose of this app was to add JWT authentication to an existing Kanban board app, which is set up to be used as a web-development task tracker that can sort items into "todo," "in progress," and "done" catagories. 
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+To view tickets, the app requires users to login using valid, existing login info, which can be seeded into the database beforehand.
+
+This app gave me practice implementing JWT authentication with a full-stack application, learn more about JWT's, and also deploying to Render while utilizing a postgres database.
 
 ## Table of Contents
 
@@ -18,7 +17,11 @@ Provide a short description explaining the what, why, and how of your project. U
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+Copy the SSH Key from the [GitHub Repository](https://github.com/dcartolano/authentikanban) and perform a git clone into a local directory of your choice. Open in VS Code or similar program. In the integrated terminal, run `npm i` to download all relevant node modules. 
+
+Rename the `.env.EXAMPLE` file to `.env`. If you are using a local database, enter values for your database in the `DB_NAME`, `DB_USER`, and `DB_PASSWORD` fields. If you are using an online database provided by Render or a similar service, enter the provided external URL in the `DB_URL` field. For the `JWT_SECRET_KEY`, use any random string of your choosing.
+
+Run the scripts `npm run build` followed by `npm run seed` to build the dist folders and seed the database.
 
 ## Usage
 
@@ -30,13 +33,21 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
     ![alt text](assets/images/screenshot.png)
     ```
 
+If you only want to navigate to the deployed site, you can view it [here](https://authentikanban.onrender.com). To login, you must use one of the automatically seeded logins, which you can find in `server/src/seeds/user-seeds.ts` or see below. 
+
+```js
+    { username: 'JollyGuru', password: 'password' },
+    { username: 'SunnyScribe', password: 'password' },
+    { username: 'RadiantComet', password: 'password' },
+```
+
+If viewing locally, run the command `npm run start:dev` in the terminal. If the link does not open in a browser automatically, click or copy the link and open in your preferred browser.
+
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
+Thanks to EdX and Northwestern for the starter code and the opportunity to practice these skills. 
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
+Thanks also to my instructor and the EdX tutors for all the help and clarifications along the way.
 
 ## License
 
